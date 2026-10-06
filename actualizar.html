@@ -189,7 +189,7 @@ function counts(st){const n=st.n26.map(o=>({...o}));
   document.querySelectorAll('#sug input:checked').forEach(c=>{const s=st.sug[+c.value];for(const m of [7,8,9])n[s.i][m]+=s.e[m]});return n}
 
 function buildRows(st){const n=counts(st);return REF.meta.map((r,i)=>{const v=[r[3],n[i][7],r[4],n[i][8],r[5],n[i][9]];const nf=(r[6]&&v.every(x=>x===0))?1:0;return [r[0],r[1],r[2],...v,nf]})}
-function gen(st,tabla,djp,upd){const rows=JSON.stringify(buildRows(st)),par=st.full?'false':'true';
+function gen(st,tabla,djp,upd){const rows=JSON.stringify(buildRows(st)),par='false';
   const i=T.djp.split('__DATA__').join(rows).split('__PARCIAL__').join(par).split('__TABLA__').join(tabla).split('__PDF__').join('').split('__PDFFILE__').join('').split('__UPDLINK__').join(upd);
   const t=T.tab.split('__DATA__').join(rows).split('__PARCIAL__').join(par).split('__DJP__').join(djp);
   return {i,t}}
