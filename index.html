@@ -90,6 +90,7 @@ tr.nf td.b::after{content:" (sin registros)";font-size:11px}
 .pager button{font:13px var(--sans);background:var(--side);color:var(--side-ink);border:1px solid var(--line);border-radius:3px;padding:7px 12px;cursor:pointer}
 .pager button:disabled{opacity:.4;cursor:default}
 .mnav{display:none}
+.ab{display:none}
 .dl{display:block;margin:14px 12px 0;width:calc(100% - 24px);font:600 13px var(--sans);background:var(--cel);color:var(--cel-ink);border:0;border-radius:3px;padding:9px 10px;cursor:pointer}
 .dl[hidden]{display:none}
 a.dl.lk{background:var(--side);color:var(--side-ink);border:1px solid var(--line);text-align:center;text-decoration:none;box-sizing:border-box}
@@ -104,6 +105,14 @@ a.dl.lk{background:var(--side);color:var(--side-ink);border:1px solid var(--line
   .sh-head img{width:36px;margin-left:10px}
   .sh-head h1{font-size:15px}
   .months{grid-template-columns:1fr}
+  table{min-width:0;table-layout:fixed}
+  th.barrios{width:34%;letter-spacing:.08em;font-size:12px}
+  th.mes div{letter-spacing:.06em;font-size:11px}
+  .fl{display:none}.ab{display:inline}
+  th.yr{letter-spacing:0;font-size:10px}
+  tbody td{padding:4px 3px;font-size:11px}
+  td.b{white-space:normal;word-break:break-word;padding-left:6px}
+  td.n{width:auto}
   .tot{grid-template-columns:1fr 1fr}
   .tot .pct{grid-column:1/-1;padding:6px 0}
 }
@@ -111,6 +120,7 @@ a.dl.lk{background:var(--side);color:var(--side-ink);border:1px solid var(--line
   @page{size:A4 landscape;margin:8mm}
   body{display:block;background:#fff}
   #navwrap,.pager,.mnav{display:none}
+.ab{display:none}
 .dl{display:block;margin:14px 12px 0;width:calc(100% - 24px);font:600 13px var(--sans);background:var(--cel);color:var(--cel-ink);border:0;border-radius:3px;padding:9px 10px;cursor:pointer}
 .dl[hidden]{display:none}
 a.dl.lk{background:var(--side);color:var(--side-ink);border:1px solid var(--line);text-align:center;text-decoration:none;box-sizing:border-box}
@@ -149,7 +159,7 @@ function djp(u,zona){
   const mb=(m,a,b)=>`<div class="mb"><h3>${m}</h3><div class="pair"><div><small>2025</small><b>${fmt(a)}</b></div><div class="y"><small>2026</small><b>${fmt(b)}</b></div></div></div>`;
   return {id:'djp-'+lbl(u).replace(' ','-'),name:'DJP - '+lbl(u),zona,html:`<section class="sheet">
   <header class="sh-head"><img src="${LOGO}" alt="Logo"><h1>HECHOS PREVENIBLES</h1><div class="djp"><small>DJP</small><b>${lbl(u)}</b><em>Zona ${zona.toLowerCase()} · ${rows.length} barrios</em></div></header>
-  <div class="tbl"><table><thead><tr><th class="barrios" rowspan="2">BARRIOS</th><th class="mes" colspan="2"><div>JULIO</div></th><th class="mes" colspan="2"><div>AGOSTO</div></th><th class="mes" colspan="2"><div>SEPTIEMBRE</div></th></tr>
+  <div class="tbl"><table><thead><tr><th class="barrios" rowspan="2">BARRIOS</th><th class="mes" colspan="2"><div><span class="fl">JULIO</span><span class="ab">JUL</span></div></th><th class="mes" colspan="2"><div><span class="fl">AGOSTO</span><span class="ab">AGO</span></div></th><th class="mes" colspan="2"><div><span class="fl">SEPTIEMBRE</span><span class="ab">SEP</span></div></th></tr>
   <tr><th class="yr">2025</th><th class="yr">2026</th><th class="yr">2025</th><th class="yr">2026</th><th class="yr">2025</th><th class="yr">2026</th></tr></thead><tbody>${body}</tbody></table></div>
   <div class="months">${mb('JULIO',s[0],s[1])}${mb('AGOSTO',s[2],s[3])}${mb('SEPTIEMBRE',s[4],s[5])}</div>
   <div class="totbar">TOTAL</div>
