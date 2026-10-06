@@ -41,20 +41,24 @@ header.top h1 span{display:block;font-weight:400;font-size:13px;opacity:.75;lett
 .tools .count{margin-left:auto;font-size:12px;color:var(--muted)}
 :focus-visible{outline:2px solid var(--mes);outline-offset:2px}
 .tbl{overflow:auto;max-height:62vh}
-table{border-collapse:separate;border-spacing:0;width:100%;min-width:900px}
+table{border-collapse:separate;border-spacing:0;width:100%;table-layout:fixed}
+th.barrios{width:28%}
+.ab2{display:none}
 thead th{position:sticky;z-index:2;background:var(--head);color:#fff}
 thead tr:first-child th{top:0}
 thead tr:nth-child(2) th{top:34px}
-th.barrios{font:700 15px "Archivo",sans-serif;letter-spacing:.25em;text-align:left;padding:0 14px;min-width:230px}
+th.barrios{font:700 15px "Archivo",sans-serif;letter-spacing:.25em;text-align:left;padding:0 14px}
+th.small{width:52px}
+td.b{overflow:hidden;text-overflow:ellipsis}
 th.mesh{padding:5px 3px 3px;height:34px}
-th.mesh div{background:var(--mes);color:var(--mes-ink);font:700 13px "Archivo Narrow",sans-serif;letter-spacing:.18em;text-align:center;padding:4px 0}
+th.mesh div{background:var(--mes);color:var(--mes-ink);font:700 12px Georgia,"Times New Roman",serif;letter-spacing:.24em;text-align:center;padding:4px 0}
 th.yr{background:var(--sub);font:500 12px "Archivo Narrow",sans-serif;letter-spacing:.12em;padding:4px 6px;text-align:center}
 th.tot div{background:#cfc6c2;color:#2a2523}
 th.small{font:500 11px "Archivo",sans-serif;padding:0 8px;text-align:left;color:#d9d0cc}
 tbody td{padding:5px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
 tbody tr:nth-child(even) td{background:var(--row)}
 tbody tr:hover td{background:color-mix(in srgb,var(--mes) 14%,var(--card))}
-td.n{text-align:right;font-variant-numeric:tabular-nums;width:62px}
+td.n{text-align:center;font-variant-numeric:tabular-nums}
 td.n.y26{color:var(--y26-ink)}
 td.n.z{color:var(--muted)}
 td.sep{border-left:2px solid var(--line)}
@@ -77,6 +81,7 @@ tr.grp td .gt{color:var(--muted);font-weight:500;margin-left:8px}
 .ab{display:none}
 .notas{padding:14px 22px;font-size:12px;color:var(--muted);line-height:1.55}
 .notas p{margin:0 0 6px;max-width:80ch}
+@media (max-width:1100px){td.b{white-space:normal;overflow:visible}th.barrios{width:24%;letter-spacing:.12em}th.mesh div{letter-spacing:.08em}}
 @media (max-width:760px){
   header.top{grid-template-columns:auto 1fr;padding:12px 14px}
   .periodo{grid-column:1/-1;text-align:left}
@@ -84,6 +89,11 @@ tr.grp td .gt{color:var(--muted);font-weight:500;margin-left:8px}
   .totales{grid-template-columns:1fr 1fr}
   .tools,.aviso,.notas{padding-left:14px;padding-right:14px}
   .wrap{padding:6px}
+  .tools{display:grid;grid-template-columns:auto 1fr;gap:8px 10px}
+  .tools input,.tools select{max-width:none;width:100%}
+  .tools .count{margin:0;grid-column:1/-1}
+  .back{grid-column:1/-1;text-align:center}
+  th.mesh div{font-family:"Archivo",sans-serif}
   .tbl{max-height:none}
   table{min-width:0;table-layout:fixed}
   thead th{position:static}
@@ -97,6 +107,10 @@ tr.grp td .gt{color:var(--muted);font-weight:500;margin-left:8px}
   td.b{white-space:normal;word-break:break-word;padding-left:6px}
   tr.nf td.b::after{content:" · sin registros"}
   tr.grp td .gt{display:block;margin:2px 0 0}
+}
+@media (max-width:420px){
+  th.yr .fl{display:none} th.yr .ab2{display:inline}
+  th.yr{font-size:10px}
 }
 @media print{.tools{display:none}.tbl{max-height:none;overflow:visible}body{background:#fff}}
 </style>
@@ -131,7 +145,7 @@ tr.grp td .gt{color:var(--muted);font-weight:500;margin-left:8px}
         <th class="mesh tot" colspan="2"><div><span class="fl">TOTAL</span><span class="ab">TOT</span></div></th>
       </tr>
       <tr>
-        <th class="yr">2025</th><th class="yr">2026</th><th class="yr">2025</th><th class="yr">2026</th><th class="yr">2025</th><th class="yr">2026</th><th class="yr">2025</th><th class="yr">2026</th>
+        <th class="yr"><span class="fl">2025</span><span class="ab2">’25</span></th><th class="yr"><span class="fl">2026</span><span class="ab2">’26</span></th><th class="yr"><span class="fl">2025</span><span class="ab2">’25</span></th><th class="yr"><span class="fl">2026</span><span class="ab2">’26</span></th><th class="yr"><span class="fl">2025</span><span class="ab2">’25</span></th><th class="yr"><span class="fl">2026</span><span class="ab2">’26</span></th><th class="yr"><span class="fl">2025</span><span class="ab2">’25</span></th><th class="yr"><span class="fl">2026</span><span class="ab2">’26</span></th>
       </tr>
     </thead>
     <tbody id="tb"></tbody>
